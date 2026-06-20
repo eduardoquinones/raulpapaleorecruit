@@ -1,0 +1,37 @@
+// Coordinates are approximate percentage positions on a Puerto Rico outline (0-100, x=left, y=top)
+export const prColleges = [
+  { id: 'upr-rio-piedras', name: 'Universidad de Puerto Rico, Recinto de Río Piedras', short: 'UPR Río Piedras', initials: 'UPR', city: 'San Juan, PR', division: 'LAI / NCAA II', color: '#2B5CE6', rosterSpots: 3, x: 62, y: 28 },
+  { id: 'upr-mayaguez', name: 'Universidad de Puerto Rico, Recinto de Mayagüez (RUM/Tarzanes)', short: 'UPR Mayagüez', initials: 'RUM', city: 'Mayagüez, PR', division: 'LAI / NCAA II', color: '#2B5CE6', rosterSpots: 2, x: 8, y: 42 },
+  { id: 'upr-bayamon', name: 'Universidad de Puerto Rico, Recinto de Bayamón', short: 'UPR Bayamón', initials: 'UPR', city: 'Bayamón, PR', division: 'LAI', color: '#2B5CE6', rosterSpots: 4, x: 54, y: 24 },
+  { id: 'upr-ponce', name: 'Universidad de Puerto Rico, Recinto de Ponce', short: 'UPR Ponce', initials: 'UPR', city: 'Ponce, PR', division: 'LAI', color: '#2B5CE6', rosterSpots: 2, x: 40, y: 70 },
+  { id: 'upr-humacao', name: 'Universidad de Puerto Rico, Recinto de Humacao', short: 'UPR Humacao', initials: 'UPR', city: 'Humacao, PR', division: 'LAI', color: '#2B5CE6', rosterSpots: 3, x: 82, y: 48 },
+  { id: 'upr-arecibo', name: 'Universidad de Puerto Rico, Recinto de Arecibo', short: 'UPR Arecibo', initials: 'UPR', city: 'Arecibo, PR', division: 'LAI', color: '#2B5CE6', rosterSpots: 2, x: 28, y: 18 },
+  { id: 'upr-carolina', name: 'Universidad de Puerto Rico, Recinto de Carolina', short: 'UPR Carolina', initials: 'UPR', city: 'Carolina, PR', division: 'LAI', color: '#2B5CE6', rosterSpots: 1, x: 68, y: 24 },
+  { id: 'upr-cayey', name: 'Universidad de Puerto Rico, Recinto de Cayey', short: 'UPR Cayey', initials: 'UPR', city: 'Cayey, PR', division: 'LAI', color: '#2B5CE6', rosterSpots: 2, x: 55, y: 50 },
+  { id: 'upr-utuado', name: 'Universidad de Puerto Rico, Recinto de Utuado', short: 'UPR Utuado', initials: 'UPR', city: 'Utuado, PR', division: 'LAI', color: '#2B5CE6', rosterSpots: 1, x: 30, y: 38 },
+
+  { id: 'inter-san-german', name: 'Inter American University of PR, San Germán Campus', short: 'Inter San Germán', initials: 'IAU', city: 'San Germán, PR', division: 'LAI / NCAA II', color: '#E8A020', rosterSpots: 3, x: 16, y: 60 },
+  { id: 'inter-bayamon', name: 'Inter American University of PR, Bayamón Campus', short: 'Inter Bayamón', initials: 'IAU', city: 'Bayamón, PR', division: 'LAI', color: '#E8A020', rosterSpots: 2, x: 52, y: 22 },
+  { id: 'inter-arecibo', name: 'Inter American University of PR, Arecibo Campus', short: 'Inter Arecibo', initials: 'IAU', city: 'Arecibo, PR', division: 'LAI', color: '#E8A020', rosterSpots: 2, x: 26, y: 16 },
+  { id: 'inter-fajardo', name: 'Inter American University of PR, Fajardo Campus', short: 'Inter Fajardo', initials: 'IAU', city: 'Fajardo, PR', division: 'LAI', color: '#E8A020', rosterSpots: 1, x: 90, y: 30 },
+  { id: 'inter-ponce', name: 'Inter American University of PR, Ponce Campus', short: 'Inter Ponce', initials: 'IAU', city: 'Ponce, PR', division: 'LAI', color: '#E8A020', rosterSpots: 2, x: 42, y: 72 },
+  { id: 'inter-aguadilla', name: 'Inter American University of PR, Aguadilla Campus', short: 'Inter Aguadilla', initials: 'IAU', city: 'Aguadilla, PR', division: 'LAI', color: '#E8A020', rosterSpots: 1, x: 12, y: 14 },
+  { id: 'inter-barranquitas', name: 'Inter American University of PR, Barranquitas Campus', short: 'Inter Barranquitas', initials: 'IAU', city: 'Barranquitas, PR', division: 'LAI', color: '#E8A020', rosterSpots: 1, x: 46, y: 44 },
+  { id: 'inter-guayama', name: 'Inter American University of PR, Guayama Campus', short: 'Inter Guayama', initials: 'IAU', city: 'Guayama, PR', division: 'LAI', color: '#E8A020', rosterSpots: 1, x: 60, y: 62 },
+  { id: 'inter-metro', name: 'Inter American University of PR, Metro Campus', short: 'Inter Metro', initials: 'IAU', city: 'San Juan, PR', division: 'LAI', color: '#E8A020', rosterSpots: 2, x: 64, y: 26 },
+
+  { id: 'pucpr', name: 'Pontificia Universidad Católica de Puerto Rico', short: 'PUCPR', initials: 'PUC', city: 'Ponce, PR', division: 'LAI / NCAA II', color: '#0D1B3E', rosterSpots: 2, x: 38, y: 74 },
+  { id: 'sagrado', name: 'Universidad del Sagrado Corazón', short: 'Sagrado Corazón', initials: 'USC', city: 'San Juan, PR', division: 'LAI', color: '#0D1B3E', rosterSpots: 3, x: 66, y: 30 },
+  { id: 'turabo', name: 'Universidad del Turabo (Sistema Ana G. Méndez)', short: 'Turabo', initials: 'TUR', city: 'Gurabo, PR', division: 'LAI', color: '#2B5CE6', rosterSpots: 3, x: 72, y: 38 },
+  { id: 'este', name: 'Universidad del Este (Sistema Ana G. Méndez)', short: 'UNE', initials: 'UNE', city: 'Carolina, PR', division: 'LAI', color: '#2B5CE6', rosterSpots: 2, x: 70, y: 26 },
+  { id: 'metro', name: 'Universidad Metropolitana (Sistema Ana G. Méndez)', short: 'UMET', initials: 'UMET', city: 'San Juan, PR', division: 'LAI', color: '#2B5CE6', rosterSpots: 2, x: 60, y: 32 },
+  { id: 'bayamon-central', name: 'Bayamón Central University', short: 'BCU', initials: 'BCU', city: 'Bayamón, PR', division: 'LAI', color: '#E8A020', rosterSpots: 1, x: 50, y: 20 },
+  { id: 'caribbean', name: 'Caribbean University', short: 'Caribbean U.', initials: 'CU', city: 'Bayamón, PR', division: 'LAI', color: '#E8A020', rosterSpots: 1, x: 56, y: 18 },
+  { id: 'cusj', name: 'Colegio Universitario de San Juan', short: 'CUSJ', initials: 'CUSJ', city: 'San Juan, PR', division: 'LAI', color: '#0D1B3E', rosterSpots: 1, x: 58, y: 34 },
+  { id: 'aupr', name: 'American University of Puerto Rico', short: 'AUPR', initials: 'AUPR', city: 'Bayamón, PR', division: 'LAI', color: '#2B5CE6', rosterSpots: 1, x: 48, y: 26 },
+  { id: 'edp', name: 'EDP University of Puerto Rico', short: 'EDP University', initials: 'EDP', city: 'San Juan, PR', division: 'LAI', color: '#E8A020', rosterSpots: 1, x: 63, y: 36 },
+  { id: 'nuc', name: 'NUC University (formerly National University College)', short: 'NUC University', initials: 'NUC', city: 'Bayamón, PR', division: 'LAI', color: '#2B5CE6', rosterSpots: 1, x: 44, y: 22 },
+  { id: 'cmpr', name: 'Conservatorio de Música de Puerto Rico', short: 'CMPR', initials: 'CMPR', city: 'San Juan, PR', division: 'LAI', color: '#0D1B3E', rosterSpots: 1, x: 61, y: 33 },
+]
+
+export const getPRCollegeById = (id) => prColleges.find((c) => c.id === id)
