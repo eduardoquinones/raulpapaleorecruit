@@ -5,6 +5,7 @@ import CollegeCard from '../../components/CollegeCard'
 import CollegeDetailModal from '../../components/CollegeDetailModal'
 import USAMap from '../../components/map/USAMap'
 import PRMap from '../../components/map/PRMap'
+import CollegesPanel from '../../components/map/CollegesPanel'
 import { usColleges } from '../../data/usColleges'
 import { useAthleteData } from '../../context/AthleteDataContext'
 import { useAdminData } from '../../context/AdminDataContext'
@@ -44,8 +45,9 @@ export default function FindColleges() {
   const [program, setProgram] = useState(DEFAULTS.program)
   const [scholarshipOnly, setScholarshipOnly] = useState(DEFAULTS.scholarshipOnly)
   const [maxGpa, setMaxGpa] = useState(DEFAULTS.maxGpa)
-  const [view, setView] = useState('list')
+  const [view, setView] = useState('map')
   const [detailCollege, setDetailCollege] = useState(null)
+  const [panel, setPanel] = useState(null) // { title, colleges, emptyMessage } | null
   const { favorites, toggleFavorite } = useAthleteData()
   const toast = useToast()
 
@@ -82,23 +84,40 @@ export default function FindColleges() {
     })
   }, [all, query, division, showPR, stateFilter, program, scholarshipOnly, maxGpa])
 
-  const getStateStatus = (code) => (filtered.some((c) => c.stateCode === code) ? 'saved' : 'none')
-  const getCollegeStatus = (id) => (favorites.includes(id) ? 'saved' : 'none')
+  const hasCollegesInState = (code) => filtered.some((c) => c.stateCode === code && c.region === 'US')
+
+  const handleSelectState = (code, name) => {
+    const stateColleges = filtered.filter((c) => c.stateCode === code && c.region === 'US')
+    setPanel({
+      title: `Universidades en ${name || code}`,
+      colleges: stateColleges,
+      emptyMessage: `No hay universidades registradas en ${name || code} aún.`,
+    })
+  }
+
+  const handleSelectPR = () => {
+    const prColleges = filtered.filter((c) => c.region === 'PR')
+    setPanel({
+      title: 'Universidades en Puerto Rico',
+      colleges: prColleges,
+      emptyMessage: 'No hay universidades registradas en Puerto Rico aún.',
+    })
+  }
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
       <div className="flex items-center justify-between flex-wrap gap-4 mb-2">
         <h1 className="text-3xl font-heading font-extrabold text-ink">Encuentra Universidades</h1>
         <div className="flex gap-1.5 glass rounded-pill p-1.5">
-          <button onClick={() => setView('list')} className={`px-3 py-1.5 rounded-pill text-sm font-medium flex items-center gap-1.5 ${view === 'list' ? 'bg-electric text-white' : 'text-ink-soft'}`}>
-            <List className="w-4 h-4" /> Lista
-          </button>
-          <button onClick={() => setView('map')} className={`px-3 py-1.5 rounded-pill text-sm font-medium flex items-center gap-1.5 ${view === 'map' ? 'bg-electric text-white' : 'text-ink-soft'}`}>
+          <button onClick={() => setView('map')} className={`px-3 py-1.5 rounded-pill text-sm font-medium flex items-center gap-1.5 transition-colors duration-200 ${view === 'map' ? 'bg-electric text-white' : 'text-ink-soft'}`}>
             <Map className="w-4 h-4" /> Mapa
+          </button>
+          <button onClick={() => setView('list')} className={`px-3 py-1.5 rounded-pill text-sm font-medium flex items-center gap-1.5 transition-colors duration-200 ${view === 'list' ? 'bg-electric text-white' : 'text-ink-soft'}`}>
+            <List className="w-4 h-4" /> Lista
           </button>
         </div>
       </div>
-      <p className="text-ink-soft mb-8">Explora programas de voleibol en Puerto Rico y Estados Unidos.</p>
+      <p className="text-ink-soft mb-8">Explora programas de voleibol en Puerto Rico y Estados Unidos. Haz clic en un estado o en Puerto Rico para ver sus universidades.</p>
 
       <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-8">
         <GlassCard className="p-5 h-fit lg:sticky lg:top-24">
@@ -161,18 +180,13 @@ export default function FindColleges() {
 
           {view === 'map' ? (
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-              <GlassCard className="p-6">
+              <GlassCard hover className="p-6">
                 <h3 className="font-heading font-bold text-ink mb-4">Estados Unidos</h3>
-                <USAMap
-                  getStateStatus={getStateStatus}
-                  onSelectState={(c) => setStateFilter((s) => (s === c ? 'Todos' : c))}
-                  selectedState={stateFilter === 'Todos' ? null : stateFilter}
-                  getStateColleges={(code) => filtered.filter((c) => c.stateCode === code)}
-                />
+                <USAMap hasColleges={hasCollegesInState} onSelectState={handleSelectState} selectedState={null} />
               </GlassCard>
-              <GlassCard className="p-6">
+              <GlassCard hover className="p-6">
                 <h3 className="font-heading font-bold text-ink mb-4">Puerto Rico</h3>
-                <PRMap getCollegeStatus={getCollegeStatus} />
+                <PRMap onSelectRegion={handleSelectPR} />
               </GlassCard>
             </div>
           ) : filtered.length === 0 ? (
@@ -194,6 +208,20 @@ export default function FindColleges() {
           )}
         </div>
       </div>
+
+      <CollegesPanel
+        open={!!panel}
+        onClose={() => setPanel(null)}
+        title={panel?.title}
+        emptyMessage={panel?.emptyMessage}
+        colleges={panel?.colleges || []}
+        favorites={favorites}
+        onToggleFavorite={handleToggleFavorite}
+        onViewMore={(c) => {
+          setPanel(null)
+          setDetailCollege(c)
+        }}
+      />
 
       <CollegeDetailModal
         college={detailCollege}

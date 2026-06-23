@@ -9,6 +9,7 @@ export function AthleteDataProvider({ children }) {
   const [checklist, setChecklist] = useLocalStorage('vr_profile_checklist', defaultProfileChecklist)
   const [favorites, setFavorites] = useLocalStorage('vr_favorite_colleges', ['upr-rio-piedras', 'sagrado'])
   const [collegeStatus, setCollegeStatus] = useLocalStorage('vr_college_status', {})
+  const [collegeNotes, setCollegeNotes] = useLocalStorage('vr_college_notes', {})
 
   const updateProfile = (patch) => {
     setProfile((prev) => ({ ...prev, ...patch }))
@@ -28,9 +29,13 @@ export function AthleteDataProvider({ children }) {
     setCollegeStatus((prev) => ({ ...prev, [collegeId]: status }))
   }
 
+  const setCollegeNote = (collegeId, note) => {
+    setCollegeNotes((prev) => ({ ...prev, [collegeId]: note }))
+  }
+
   return (
     <AthleteDataContext.Provider
-      value={{ profile, updateProfile, checklist, favorites, toggleFavorite, collegeStatus, setStatus }}
+      value={{ profile, updateProfile, checklist, favorites, toggleFavorite, collegeStatus, setStatus, collegeNotes, setCollegeNote }}
     >
       {children}
     </AthleteDataContext.Provider>
