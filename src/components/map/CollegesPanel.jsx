@@ -2,7 +2,7 @@ import { MapPin, Star, Users } from 'lucide-react'
 import Modal from '../ui/Modal'
 import Badge from '../ui/Badge'
 import Button from '../ui/Button'
-import { collegeGradientStyle } from '../../utils/collegeGradient'
+import CollegeLogo from '../CollegeLogo'
 
 export default function CollegesPanel({ open, onClose, title, emptyMessage, colleges, favorites, onToggleFavorite, onViewMore }) {
   return (
@@ -19,12 +19,7 @@ export default function CollegesPanel({ open, onClose, title, emptyMessage, coll
             const isFavorite = favorites?.includes(c.id)
             return (
               <div key={c.id} className="glass rounded-2xl p-4 flex items-center gap-3 shadow-glass transition-all duration-300 hover:shadow-glass-lg hover:-translate-y-0.5">
-                <div
-                  className="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold shrink-0 shadow-md"
-                  style={collegeGradientStyle(c)}
-                >
-                  {c.initials}
-                </div>
+                <CollegeLogo college={c} size={48} />
                 <div className="flex-1 min-w-0">
                   <p className="font-semibold text-ink truncate">{c.name}</p>
                   <p className="text-xs text-ink-soft flex items-center gap-1">

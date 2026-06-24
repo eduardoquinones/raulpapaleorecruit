@@ -2,6 +2,7 @@ import { useRef, useState } from 'react'
 import { ComposableMap, Geographies, Geography, ZoomableGroup } from 'react-simple-maps'
 import { Plus, Minus, RotateCcw } from 'lucide-react'
 import { FIPS_TO_CODE, US_ATLAS_STATES_URL } from '../../data/usStateFips'
+import MapLegend from './MapLegend'
 
 const FILL_DEFAULT = '#E8EEFF'
 const FILL_AVAILABLE = '#C5D5FF'
@@ -96,10 +97,12 @@ export default function USAMap({ hasColleges, selectedState, onSelectState }) {
         </span>
       )}
 
-      <div className="flex items-center gap-4 mt-4 text-xs text-ink-soft flex-wrap">
-        <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-sm inline-block" style={{ backgroundColor: FILL_AVAILABLE }} /> Universidades disponibles</span>
-        <span className="flex items-center gap-1.5"><span className="w-3 h-3 rounded-sm inline-block" style={{ backgroundColor: FILL_DEFAULT }} /> Sin universidades</span>
-      </div>
+      <MapLegend
+        items={[
+          { color: FILL_AVAILABLE, label: 'Universidades disponibles' },
+          { color: FILL_DEFAULT, label: 'Sin universidades' },
+        ]}
+      />
     </div>
   )
 }

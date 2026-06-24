@@ -2,10 +2,10 @@ import { useMemo, useState } from 'react'
 import { Star, MapPin, Users, Check, ChevronDown, ChevronUp } from 'lucide-react'
 import GlassCard from '../../components/ui/GlassCard'
 import Badge from '../../components/ui/Badge'
+import CollegeLogo from '../../components/CollegeLogo'
 import { prColleges } from '../../data/prColleges'
 import { usColleges } from '../../data/usColleges'
 import { useAthleteData } from '../../context/AthleteDataContext'
-import { collegeGradientStyle } from '../../utils/collegeGradient'
 import { useToast } from '../../components/ui/Toast'
 
 const STATUS_COLORS = { saved: '#2B5CE6', contacted: '#EA580C', committed: '#16A34A' }
@@ -70,12 +70,7 @@ export default function MyColleges() {
             return (
               <GlassCard key={college.id} hover premium className="p-6">
                 <div className="flex items-start gap-4 flex-wrap">
-                  <div
-                    className="w-16 h-16 rounded-full flex items-center justify-center text-white font-bold text-lg shrink-0 shadow-md"
-                    style={collegeGradientStyle(college)}
-                  >
-                    {college.initials}
-                  </div>
+                  <CollegeLogo college={college} size={64} />
                   <div className="flex-1 min-w-[200px]">
                     <p className="font-heading font-bold text-ink text-lg">{college.name}</p>
                     <p className="text-sm text-ink-soft flex items-center gap-1 mt-0.5">

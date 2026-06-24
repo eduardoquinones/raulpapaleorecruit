@@ -59,8 +59,13 @@ export default {
         'fade-up': 'fadeUp 0.6s ease-out forwards',
         'float-in': 'floatIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards',
         'pulse-glow': 'pulseGlow 1.4s ease-in-out infinite',
+        'hero-zoom': 'heroZoom 20s ease-in-out infinite alternate',
       },
       keyframes: {
+        heroZoom: {
+          '0%': { transform: 'scale(1)' },
+          '100%': { transform: 'scale(1.05)' },
+        },
         fadeIn: {
           '0%': { opacity: 0 },
           '100%': { opacity: 1 },

@@ -47,6 +47,7 @@ function AppNavbar() {
   const { user } = useAuth()
   const { pathname } = useLocation()
   if (pathname.startsWith('/admin')) return null
+  if (pathname === '/') return null // Landing page renders its own floating hero nav
 
   const isAuthPage =
     pathname.startsWith('/athlete/login') ||

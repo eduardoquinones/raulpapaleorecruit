@@ -1,6 +1,7 @@
 import { Star } from 'lucide-react'
 import GlassCard from '../ui/GlassCard'
 import Badge from '../ui/Badge'
+import CollegeLogo from '../CollegeLogo'
 import { getPRCollegeById } from '../../data/prColleges'
 import { getUSCollegeById } from '../../data/usColleges'
 import { useAthleteData } from '../../context/AthleteDataContext'
@@ -24,7 +25,7 @@ export default function CollegeCard({ recommendation }) {
       style={{ borderLeftColor: college.color }}
     >
       <div className="flex sm:flex-col items-center gap-3 sm:gap-2 sm:w-12 shrink-0">
-        <span className="font-heading font-bold text-sm" style={{ color: college.color }}>{college.initials}</span>
+        <CollegeLogo college={college} size={40} />
         <button onClick={() => toggleFavorite(college.id)} className="text-gold hover:scale-110 transition-transform">
           <Star className={`w-5 h-5 ${isFavorite ? 'fill-gold' : ''}`} />
         </button>

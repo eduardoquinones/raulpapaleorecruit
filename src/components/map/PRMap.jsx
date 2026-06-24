@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { MapPin } from 'lucide-react'
 import { prColleges } from '../../data/prColleges'
+import MapLegend from './MapLegend'
 
 const PIN_COLOR = '#2B5CE6'
 
@@ -46,7 +47,7 @@ export default function PRMap({ onSelectRegion }) {
             className="absolute -translate-x-1/2 -translate-y-full"
           >
             <MapPin
-              className="w-6 h-6 drop-shadow-md transition-transform hover:scale-125"
+              className="w-5 h-5 drop-shadow-[0_3px_3px_rgba(13,27,62,0.35)] transition-transform duration-200 hover:scale-125"
               style={{ color: PIN_COLOR, fill: PIN_COLOR }}
               strokeWidth={1.5}
               stroke="#FFFFFF"
@@ -64,10 +65,7 @@ export default function PRMap({ onSelectRegion }) {
         </span>
       </button>
 
-      <div className="flex items-center gap-2 mt-4 text-xs text-ink-soft">
-        <MapPin className="w-3.5 h-3.5" style={{ color: PIN_COLOR }} />
-        {prColleges.length} universidades en Puerto Rico &middot; haz clic en el mapa para verlas todas
-      </div>
+      <MapLegend items={[{ color: PIN_COLOR, label: `${prColleges.length} universidades · clic para ver todas` }]} />
     </div>
   )
 }

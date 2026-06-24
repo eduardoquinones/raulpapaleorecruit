@@ -2,8 +2,8 @@ import { Link } from 'react-router-dom'
 import { UserPlus, Handshake, Trophy, ArrowRight, GraduationCap, Megaphone, Users, School, Award, Star } from 'lucide-react'
 import Button from '../components/ui/Button'
 import GlassCard from '../components/ui/GlassCard'
-import Badge from '../components/ui/Badge'
 import FadeUp from '../components/ui/FadeUp'
+import Hero from '../components/landing/Hero'
 import AthleteCard from '../components/AthleteCard'
 import CollegeCard from '../components/CollegeCard'
 import { mockAthletes } from '../data/mockAthletes'
@@ -26,79 +26,20 @@ const steps = [
 export default function Landing() {
   return (
     <div>
-      {/* HERO */}
-      <section className="relative pt-10 pb-20 px-4 overflow-hidden hero-pattern">
-        <div className="absolute inset-0 bg-gradient-to-b from-electric/5 via-transparent to-transparent -z-10" />
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
-          <div className="animate-slide-up">
-            <Badge variant="blue" className="mb-5">Tu camino al voleibol universitario</Badge>
-            <h1 className="text-4xl sm:text-5xl lg:text-7xl font-heading font-extrabold text-ink leading-[1.05]">
-              Tu Próximo Nivel <span className="bg-hero-gradient bg-clip-text text-transparent">Te Espera</span>
-            </h1>
-            <p className="mt-6 text-lg text-ink-soft max-w-lg">
-              La plataforma #1 de reclutamiento de voleibol en Puerto Rico. Conecta con entrenadores de PR y Estados Unidos.
-            </p>
-            <div className="mt-8 flex flex-col sm:flex-row gap-3">
-              <Button as={Link} to="/athlete/register" variant="gold" size="lg">
-                Crear Perfil Gratis
-                <ArrowRight className="w-5 h-5" />
-              </Button>
-              <Button as={Link} to="/coach/register" variant="outlineInk" size="lg">
-                Soy Entrenador
-              </Button>
-            </div>
+      <Hero />
 
-            <div className="grid grid-cols-4 gap-4 mt-12 max-w-lg">
-              {stats.map((s) => (
-                <div key={s.label}>
-                  <span className="icon-tile bg-electric/10 mb-2">
-                    <s.icon className="w-5 h-5 text-electric" />
-                  </span>
-                  <div className="text-xl sm:text-2xl font-heading font-extrabold text-electric">{s.value}</div>
-                  <div className="text-xs text-ink-soft mt-0.5">{s.label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* mockup dashboard preview */}
-          <div className="relative animate-float-in">
-            <GlassCard premium className="p-6 rotate-1">
-              <div className="flex items-center justify-between mb-5">
-                <div className="flex items-center gap-2">
-                  <span className="w-9 h-9 rounded-full bg-electric flex items-center justify-center text-white font-bold text-sm">TR</span>
-                  <div>
-                    <p className="font-bold text-ink text-sm">Tomas Rivera</p>
-                    <p className="text-xs text-ink-soft">Outside Hitter · 2026</p>
-                  </div>
-                </div>
-                <Badge variant="gold">95%</Badge>
+      {/* STATS — typographic moment */}
+      <section className="px-4 py-20 bg-deep">
+        <div className="max-w-6xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-8 sm:gap-4">
+          {stats.map((s, i) => (
+            <FadeUp key={s.label} delay={i * 80} className="text-center sm:text-left">
+              <s.icon className="w-6 h-6 text-gold mb-2 mx-auto sm:mx-0" />
+              <div className="font-heading font-extrabold text-white text-[44px] sm:text-[64px] lg:text-[80px] leading-none">
+                {s.value}
               </div>
-              <div className="grid grid-cols-3 gap-3 mb-5">
-                {[['233', 'Búsquedas'], ['12', 'Vistas'], ['3', 'Seguimientos']].map(([v, l]) => (
-                  <div key={l} className="bg-white/60 rounded-2xl p-3 text-center border border-white/40">
-                    <div className="text-xl font-extrabold text-electric">{v}</div>
-                    <div className="text-[10px] text-ink-soft">{l}</div>
-                  </div>
-                ))}
-              </div>
-              <div className="space-y-2.5">
-                {['UPR Río Piedras', 'Inter San Germán', 'Sagrado Corazón'].map((c) => (
-                  <div key={c} className="flex items-center justify-between bg-white/50 rounded-xl px-3 py-2.5 border border-white/40">
-                    <span className="text-sm text-ink font-medium">{c}</span>
-                    <Badge variant="blue">Recomendado</Badge>
-                  </div>
-                ))}
-              </div>
-            </GlassCard>
-            <GlassCard className="p-4 absolute -bottom-6 -left-6 hidden sm:flex items-center gap-3 -rotate-2 w-56">
-              <span className="w-10 h-10 rounded-full bg-gold/20 flex items-center justify-center"><Trophy className="w-5 h-5 text-gold" /></span>
-              <div>
-                <p className="text-xs text-ink-soft">Nueva oferta</p>
-                <p className="text-sm font-bold text-ink">UPR Mayagüez</p>
-              </div>
-            </GlassCard>
-          </div>
+              <div className="text-sm text-white/60 mt-1">{s.label}</div>
+            </FadeUp>
+          ))}
         </div>
       </section>
 

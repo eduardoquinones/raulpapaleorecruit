@@ -2,7 +2,7 @@ import { MapPin, Users, GraduationCap, Star } from 'lucide-react'
 import Modal from './ui/Modal'
 import Badge from './ui/Badge'
 import Button from './ui/Button'
-import { collegeGradientStyle } from '../utils/collegeGradient'
+import CollegeLogo from './CollegeLogo'
 
 export default function CollegeDetailModal({ college, onClose, favorited, onToggleFavorite }) {
   if (!college) return null
@@ -10,12 +10,7 @@ export default function CollegeDetailModal({ college, onClose, favorited, onTogg
   return (
     <Modal open={!!college} onClose={onClose} title="Detalles de la Universidad" variant="modal" maxWidth="max-w-lg">
       <div className="flex items-center gap-4 mb-5">
-        <div
-          className="w-16 h-16 rounded-full flex items-center justify-center text-white font-bold text-xl shadow-md shrink-0"
-          style={collegeGradientStyle(college)}
-        >
-          {college.initials}
-        </div>
+        <CollegeLogo college={college} size={64} />
         <div>
           <h3 className="font-heading font-bold text-ink text-lg">{college.name}</h3>
           <p className="text-sm text-ink-soft flex items-center gap-1">
